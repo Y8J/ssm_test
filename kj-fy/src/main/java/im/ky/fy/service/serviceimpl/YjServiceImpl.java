@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * @Value是Spring内部用来读取properties配置文件内容的注解
- * @author yangjing
+ * @author yangjingenv
  *
  */
 @Service
