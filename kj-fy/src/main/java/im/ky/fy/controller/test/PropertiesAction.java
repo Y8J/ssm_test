@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * 实验使用propertyUtil读取配置文件工具类
- * @author yangjing
+ * @author yj
  *
  */
 @RestController
