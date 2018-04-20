@@ -15,7 +15,7 @@ import org.joda.time.DateTimeUtils;
 /**
  * 配置文件处理类 
  * 
- * @author lijunjie
+ * @author yj
  * 
  * 
  */
