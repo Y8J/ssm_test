@@ -1,7 +1,7 @@
 package im.ky.fy.controller.test;
 
 import im.ky.fy.pojo.TestMapperBean;
-import im.ky.fy.service.TestMapperService;
+import im.ky.fy.service.TestService;
 
 import java.util.List;
 
@@ -15,12 +15,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class TestMapperController {
 
 	@Autowired
-	private TestMapperService testMapperService;
+	private TestService testService;
 	
-	 @RequestMapping("queryTestPojo")
-	  @ResponseBody
-	  public List<TestMapperBean> queryTestPojo(){
-		  return testMapperService.queryTestPojo();
-	  }
+    @RequestMapping("queryTestPojo")
+    @ResponseBody
+    public List<TestMapperBean> queryTestPojo(){
+	    return testService.mapperQueryTestPojo();
+    }
 	
 }
