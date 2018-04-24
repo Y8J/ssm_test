@@ -2,6 +2,12 @@ package im.ky.fy.pojo;
 
 import java.io.Serializable;
 
+
+/**
+ * mybatis xml配置使用bean
+ * @author yangjing
+ *
+ */
 public class Test implements Serializable {
 	private Integer id;
 	private String name;
