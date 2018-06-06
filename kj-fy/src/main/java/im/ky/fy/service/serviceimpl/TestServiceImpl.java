@@ -54,8 +54,8 @@ public class TestServiceImpl implements TestService {
 	}
 
 	@Override
-	public List<TestMapperBean> pagingTestPojo(TestMapperBean bean) {
-		PageHelper.startPage(1, 2);
+	public List<TestMapperBean> pagingTestPojo(TestMapperBean bean,Integer pageNo,Integer pageSize) {
+		PageHelper.startPage(pageNo, pageSize);
 		List<TestMapperBean> tlist = testMapper.select(bean);
 		return tlist;
 	}

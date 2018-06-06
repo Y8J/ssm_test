@@ -22,10 +22,9 @@ public class TestPageHelperController {
 	
 	@RequestMapping("paging")
 	@ResponseBody
-	public List<TestMapperBean> paging(HttpServletRequest request, HttpServletResponse response,String name){
-		TestMapperBean bean = new TestMapperBean();
-		bean.setName(name);
-		List<TestMapperBean> testList = testService.pagingTestPojo(bean);
+	public List<TestMapperBean> paging(HttpServletRequest request, HttpServletResponse response,TestMapperBean bean,Integer pageNo,Integer pageSize){
+		
+		List<TestMapperBean> testList = testService.pagingTestPojo(bean,pageNo,pageSize);
 		
 		return testList;
 	}

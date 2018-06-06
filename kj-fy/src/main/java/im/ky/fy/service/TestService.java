@@ -29,6 +29,6 @@ public interface TestService {
 	 /**
 	  *  通用mapper 与 分页助手 结合组成分页查询功能
 	  */
-	 List<TestMapperBean> pagingTestPojo(TestMapperBean bean);
+	 List<TestMapperBean> pagingTestPojo(TestMapperBean bean,Integer pageNo,Integer pageSize);
 	 
 }
