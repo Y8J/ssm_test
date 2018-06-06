@@ -1,0 +1,105 @@
+@charset "utf-8";
+
+/*头部、尾部*/
+.header-box{ width: 100%; height: 50px; line-height: 50px; background: #b4060f; position: fixed; top: 0; left:0; z-index: 999;}
+.header-box div{ position: relative;}
+.header-box h2{ text-align: center; color: #fff; font-weight: normal; font-size: 20px;}
+.header-box a.user{ background: url(../images/icons/icon-user.png) no-repeat; background-size: 20px 20px; width: 20px; height: 20px; position: absolute; right: 10px; top: 15px;}
+.header-box a.back{ background: url(../images/icons/icon-back.png) no-repeat; background-size: 10px 20px; width: 10px; height: 20px; position: absolute; left: 10px; top: 15px;}
+
+.footer-box{ width: 100%; height: 40px; line-height: 40px; border-top: 1px solid #242440; background: #fff; position: fixed; bottom: 0; left:0; z-index: 998;}
+.footer-box span{ float: left; width: 50px; text-align: center;}
+.footer-box span img{ width: 30px; height: 30px; display: block; margin: 5px auto 0;}
+.footer-box nav{ margin-left: 50px;}
+.footer-box nav a{ float: left; width: 25%; border-left: 1px solid #242440; text-align: center; color: #242440; font-size: 14px;}
+
+/*logo*/
+.card-box{ margin: 40px 50px;}
+
+.banner-box img{ display: block;}
+
+/*icons*/
+.icons-box div{ height: 150px; border-bottom: 1px solid #242440; overflow: hidden;}
+.icons-box a{ float: left; width: 33.33%; height: 100%; text-align: center; border-right: 1px solid #242440; padding-top: 40px;}
+.icons-box a:last-child{ border-right: none;}
+.icons-box img{ width: 45px; height: 35px; vertical-align: middle; margin-bottom: 5px;}
+.icons-box p{ color: #242440; font-size: 14px; word-wrap: break-word; padding: 0 5px;}
+
+/*按钮*/
+.btn-box{ padding: 0 10px;}
+.btn-box a{ height: 46px; line-height: 44px; text-align: center; margin-bottom: 20px; font-size: 20px; border: 1px solid #ccc; border-radius: 5px; display: block;}
+.btn-box a.red{ background: #b4060f; border-color: #b4060f; color: #fff; margin-top: 30px;}
+
+/*表格*/
+.table-box{ padding: 0 10px;}
+.table-box thead td{ background: #b4060f; border-color: #b4060f; color: #fff;}
+.table-box td{ padding: 10px 0; text-align: center; border: 1px solid #aaa; font-size: 14px;}
+.table-box td p{ font-size: 12px;}
+
+/*购买套餐*/
+.buy-number{ margin-top: 20px;}
+.buy-number li{ padding: 10px 0; line-height: 32px; border-bottom: 1px solid #ccc; font-size: 18px; overflow: hidden;}
+
+.count-box{ width: 122px; height: 34px; line-height: 32px; display: block; border: 1px solid #aaa; overflow: hidden;}
+.count-box i{ float: left; width: 40px; height: 32px; background: #efeeee; font-size: 30px; text-align: center;}
+.count-box .num{ float: left; width: 40px; height: 32px; font-size: 20px; color: #333; text-align: center; border-left: 1px solid #aaa; border-right: 1px solid #aaa;}
+
+.count-wp{ padding: 15px 10px 0 0;}
+
+/*套餐详情*/
+.meal-details{ padding: 0 10px;}
+.meal-details dt{ border-bottom: 1px solid #ccc; padding: 10px; font-size: 18px; position: relative;}
+.meal-details dt.cur i{ transform: rotate(90deg); -webkit-transform: rotate(90deg);}
+.meal-details dt i{ background: url(../images/icons/icon-link.png) no-repeat; background-size: 10px 20px; width: 10px; height: 20px; position: absolute; right: 10px; top: 10px; transition: all .3s;}
+.meal-details dd{ margin: 0 0 10px 50px; color: #777; display: none;}
+.meal-details dd p{ border-bottom: 1px solid #ccc; padding: 10px 10px 10px 0; overflow: hidden;}
+.meal-details dd em{ color: #f50000;}
+
+/*订单详情*/
+.order-details{ padding: 0 10px; font-size: 14px;}
+.order-details li{ border-bottom: 1px solid #ccc; padding: 10px 0; position: relative; overflow: hidden;}
+.order-details em{ color: #b4060f;}
+.order-details .hd li span:nth-child(1){ float: left; width: 35%; padding-top: 5px;}
+.order-details .hd li span:nth-child(2){ float: right; width: 65%; text-align: right;}
+.order-details .hd li input{ width: 100%; padding: 5px; border: 1px solid #eee; border-radius: 3px; text-align: right; font-size: 14px;}
+
+.order-details .bd li span{ float: left; width: 33.3%;}
+.order-details .bd li span:nth-child(2){ text-align: center;}
+.order-details .bd li span:nth-child(3){ text-align: right;}
+.order-details .ft{ padding: 15px 5px 0 0;}
+
+/*表单*/
+.form-box{ padding: 0 10px;}
+.form-box li{ width: 100%; height: 44px; line-height: 42px; margin-bottom: 10px; border: 1px solid #ccc; padding: 0 10px; position: relative;}
+.form-box li .ipt{ width: 100%; height: 100%; border: none;}
+.form-box li .code{ width: 120px; height: 44px; color: #fff; border: none; background: #b4060f; position: absolute; right: -1px; top: -1px;}
+
+/*充值*/
+.recharge-card{ padding: 0 5px;}
+.recharge-card .ipt{ width: 100%; height: 44px; line-height: 42px; border: 1px solid #ccc; padding: 0 10px;}
+.recharge-card p{ text-align: right; font-size: 20px; padding-top: 30px;}
+.recharge-card em{ color: #b4060f}
+
+/*成功失败*/
+.show-result{ padding: 70px 0; text-align: center;}
+.show-result p{ font-size: 20px; padding-top: 20px;}
+
+/*购买卡*/
+.details-txt .hd h2{ font-size: 16px; text-align: center; font-weight: normal; padding: 5px 0 15px 0;}
+.details-txt .hd p{ line-height: 24px; font-size: 14px;}
+.details-txt .hd img{ display: block; margin-top: 20px;}
+
+.details-txt .bd{ padding-top: 10px;}
+.details-txt .bd h4{ background: url(../images/icons/icon-bd.jpg) no-repeat; width: 131px; height: 36px; line-height: 36px; color: #fff; text-align: center; font-size: 16px; margin: 10px 0;}
+.details-txt .bd p{ font-size: 14px; line-height: 24px;}
+
+/*注册*/
+.register-box{ padding: 0 10px;}
+.register-box li{ position: relative; height: 40px; line-height: 38px; border: 1px solid #ddd; background: #fff; margin-top: 10px;}
+.register-box li .hd{ float: left; width: 36px;}
+.register-box li .hd img{ width: 22px; height: 22px; margin: 8px auto; display: block;}
+.register-box li .bd{ margin-left: 36px;}
+.register-box li .bd .ipt{ width: 100%; height: 38px; line-height: 38px; border: none;}
+.register-box li .bd .btn-code{ width: 100px; height: 40px; background: #ff6600; color: #fff; border: none; position: absolute; right: -1px; top: -1px;}
+.register-box li .bd .img-code{ width: 100px; height: 40px; position: absolute; right: -1px; top: -1px;}
+
