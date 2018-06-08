@@ -18,9 +18,7 @@ public class SysMenuServiceImpl implements SysMenuService {
 	private SysMenuMapper sysMenuMapper;
 	
 	@Override
-	public List<SysMenuBean> getListPage(SysMenuBean bean, Integer pageNo,Integer pageSize) {
-		//转载分页插件
-		PageHelper.startPage(pageNo, pageSize);
+	public List<SysMenuBean> getList(SysMenuBean bean) {
 		List<SysMenuBean> select = sysMenuMapper.select(bean);
 		return select;
 	}
@@ -34,7 +32,7 @@ public class SysMenuServiceImpl implements SysMenuService {
 	}
 
 	@Override
-	public SysMenuBean getListPage(SysMenuBean bean) {
+	public SysMenuBean getBean(SysMenuBean bean) {
 		SysMenuBean selectOne = sysMenuMapper.selectOne(bean);
 		return selectOne;
 	}

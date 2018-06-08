@@ -2,10 +2,9 @@ package im.ky.fy.controller.admin;
 
 import im.ky.fy.pojo.SysMenuBean;
 import im.ky.fy.service.SysMenuService;
+import im.ky.fy.util.ResponseUtils;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,7 +13,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import com.google.common.collect.Lists;
 
@@ -28,10 +31,9 @@ public class SysMenuAdmin {
 	//查询所有的菜单
 	@ResponseBody
 	@RequestMapping("list.do")
-	public List<SysMenuBean> listSys(HttpServletRequest request, HttpServletResponse response,ModelMap model,SysMenuBean bean,Integer pageNo,Integer pageSize){
-		 pageNo = 1;
-		 pageSize = 10;
-		List<SysMenuBean> listPage = sysMenuService.getListPage(bean, pageNo, pageSize);
+	public List<SysMenuBean> listSys(HttpServletRequest request, HttpServletResponse response,ModelMap model,SysMenuBean bean){
+		 
+		List<SysMenuBean> listPage = sysMenuService.getList(bean);
 		return listPage;
 	}
 	
@@ -44,7 +46,7 @@ public class SysMenuAdmin {
 		
 		//保存的菜单列表
 		List<SysMenuBean> list = Lists.newArrayList();
-		sortList(list,listPage,1L);
+		sortList(listPage,list,1L);
 		
 		return list;
 	}
@@ -55,24 +57,42 @@ public class SysMenuAdmin {
 	 * @param listAll 查询出来的数据
 	 * @param pid 父类id
 	 */
-	public void sortList(List<SysMenuBean> list,List<SysMenuBean> listAll,Long pid){
-		
-		for (int i=0; i<listAll.size(); i++){
-			SysMenuBean e = listAll.get(i);
-			
-			if (e.getParentId().equals(pid)){
-				list.add(e);
-				// 判断是否还有子节点, 有则继续获取子节点
-				for (int j=0; j<listAll.size(); j++){
-					SysMenuBean child = listAll.get(j);
-					List<SysMenuBean> listPage = sysMenuService.getListPage(child.getParentId());
-					for (SysMenuBean sysMenuBean : listPage) {
-						sortList(list, listAll, e.getId());
-						break;
-					}
-				}
-			}
-		}
+	public void sortList(List<SysMenuBean> listAll,List<SysMenuBean> list,Long pid){
+	       
+		   for (SysMenuBean e : listAll) {
+			   SysMenuBean b = e;
+			   List<SysMenuBean> listPage = sysMenuService.getListPage(e.getParentId());
+			   
+			   
+		   }
 	}
 	
+	@RequestMapping(value = "v_add.do", method = RequestMethod.GET)
+    public String v_add(HttpServletRequest request, HttpServletResponse response, ModelMap model, SysMenuBean menu) {
+        model.addAttribute("selectIds", "1,2,3,4,5,6");
+        model.addAttribute("menu", menu);
+        return "sysmenu/add";
+    }
+	
+	@RequestMapping(value = "v_treemenu.do", method = {RequestMethod.POST,RequestMethod.GET})
+	public void treemenu(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws JSONException{
+		JSONObject ajaxResult = new JSONObject();
+		List<SysMenuBean> list=sysMenuService.getList(null);
+		if (list!=null&&list.size()>0) {
+			JSONArray listj = new JSONArray();
+			for (SysMenuBean menu : list) {
+				JSONObject entity = new JSONObject();
+				entity.put("id", menu.getId());
+				entity.put("name", menu.getMenuName());
+				if (menu!=null) {
+					entity.put("pId", menu.getParentId());
+				}else{
+					entity.put("pId","");
+				}
+				listj.put(entity);
+			}
+			ajaxResult.put("treeData", listj);
+		}
+		ResponseUtils.renderJson(response, ajaxResult.toString());
+	}
 }
