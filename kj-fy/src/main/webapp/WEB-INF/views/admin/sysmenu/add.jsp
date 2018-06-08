@@ -32,10 +32,11 @@ $(document).ready(function(){
 		var ids = "${selectIds}".split(",");
 		for(var i=0; i<ids.length; i++) {
 			var node = tree.getNodeByParam("id", ids[i]);
-			tree.selectNode(node, true);
+			//tree.checkNode(node, true, true);
+			try{tree.checkNode(node, true, false);}catch(e){}
 		}
 	});
-	$("#jvForm").submit(function(){
+	$("#jvForm").click(function(){
 		var ids = [], names = [], nodes = [];
 		nodes =tree.getCheckedNodes();
 		if(nodes.length==0){
@@ -47,6 +48,7 @@ $(document).ready(function(){
 			names.push(nodes[i].name);
 		}
 		$("#mid").val(ids);
+		alert(ids);
 	});
 });
 </script>
@@ -67,6 +69,8 @@ $(document).ready(function(){
 			<input type="hidden" name="mid" id="mid" value="" class="{required:true}" />
 			</td>
 		</tr>
+		
+		<input type="button"  name="jvForm" id="jvForm" value="点击查看选择的菜单" />
 
 </div>
 </body>
