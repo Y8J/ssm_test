@@ -26,7 +26,15 @@
 $(document).ready(function(){
 	$.get("/admin/sysmenu/v_treemenu.do?extId=1&t="+new Date().getTime(), function(treeNodes){
 		tree=$.fn.zTree.init($("#tree"), setting, treeNodes.treeData);
-		tree.expandAll(true);
+		//打开全部节点
+		//tree.expandAll(true);
+		
+		// 默认展开一级节点   i遍历表示要展开到第几个节点
+		var i=1;
+		var nodes = tree.getNodesByParam("level", i);
+		for(var i=0; i<nodes.length; i++) {
+			tree.expandNode(nodes[i], true, false, false);
+		}
 		
 		// 默认选择节点
 		var ids = "${selectIds}".split(",");
@@ -35,6 +43,8 @@ $(document).ready(function(){
 			//tree.checkNode(node, true, true);
 			try{tree.checkNode(node, true, false);}catch(e){}
 		}
+		
+		
 	});
 	$("#jvForm").click(function(){
 		var ids = [], names = [], nodes = [];
