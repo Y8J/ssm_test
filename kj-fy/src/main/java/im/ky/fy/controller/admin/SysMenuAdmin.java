@@ -46,26 +46,11 @@ public class SysMenuAdmin {
 		
 		//保存的菜单列表
 		List<SysMenuBean> list = Lists.newArrayList();
-		sortList(listPage,list,1L);
 		
 		return list;
 	}
 	
-	/**
-	 * 
-	 * @param list  保存容器
-	 * @param listAll 查询出来的数据
-	 * @param pid 父类id
-	 */
-	public void sortList(List<SysMenuBean> listAll,List<SysMenuBean> list,Long pid){
-	       
-		   for (SysMenuBean e : listAll) {
-			   SysMenuBean b = e;
-			   List<SysMenuBean> listPage = sysMenuService.getListPage(e.getParentId());
-			   
-			   
-		   }
-	}
+	
 	
 	@RequestMapping(value = "v_add.do", method = RequestMethod.GET)
     public String v_add(HttpServletRequest request, HttpServletResponse response, ModelMap model, SysMenuBean menu) {
@@ -94,5 +79,33 @@ public class SysMenuAdmin {
 			ajaxResult.put("treeData", listj);
 		}
 		ResponseUtils.renderJson(response, ajaxResult.toString());
+	}
+	
+	@RequestMapping(value = "v_list.do")
+	public String listgo(SysMenuBean menu,HttpServletRequest request, ModelMap model){
+		List<SysMenuBean> list = Lists.newArrayList();
+		List<SysMenuBean> sourcelist = sysMenuService.getList(null);
+		sortList(sourcelist,list, 1L);
+        model.addAttribute("mlist", list);
+		return "sysmenu/list";
+	}
+	
+	
+
+	public  void sortList(List<SysMenuBean> listAll,List<SysMenuBean> list,Long pid){
+		for (int i=0; i<listAll.size(); i++){
+			SysMenuBean e = listAll.get(i);
+			if (e.getParentId().equals(pid)){
+				list.add(e);
+				// 判断是否还有子节点, 有则继续获取子节点
+				for (int j=0; j<listAll.size(); j++){
+					SysMenuBean child = listAll.get(j);
+					if (child.getParentId().equals(e.getId())){
+						sortList(list, listAll, e.getId());
+						break;
+					}
+				}
+			}
+		}
 	}
 }
