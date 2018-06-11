@@ -24,7 +24,7 @@
    <mvc:interceptors>
 	   <mvc:interceptor>
 	       <!-- 配置需要拦截的请求链接 -->
-	       <mvc:mapping path="/user/**"/>
+	       <mvc:mapping path="/**"/>
 	       
 	       <!-- 但是排除下面这些，也就是不拦截请求 -->
 	       <!-- 用户注册不需要拦截 -->

@@ -95,12 +95,12 @@ public class SysMenuAdmin {
 	public  void sortList(List<SysMenuBean> listAll,List<SysMenuBean> list,Long pid){
 		for (int i=0; i<listAll.size(); i++){
 			SysMenuBean e = listAll.get(i);
-			if (e.getParentId().equals(pid)){
+			if (e.getParentId()==pid){
 				list.add(e);
 				// 判断是否还有子节点, 有则继续获取子节点
 				for (int j=0; j<listAll.size(); j++){
 					SysMenuBean child = listAll.get(j);
-					if (child.getParentId().equals(e.getId())){
+					if (child.getParentId()==e.getId()){
 						sortList(list, listAll, e.getId());
 						break;
 					}
