@@ -52,13 +52,13 @@
      
 	<!-- 发布dubbo服务 -->
 	<!-- 提供方应用信息，用于计算依赖关系 -->
-	<!-- <dubbo:application name="kj-fy" /> -->
+	<!--  <dubbo:application name="kj-fy" />  -->
 	<!-- 注册中心的地址 -->
-	<!-- <dubbo:registry protocol="zookeeper" address="192.168.253.1:2181" /> -->
+	<!--  <dubbo:registry protocol="zookeeper" address="127.0.0.1:2181" />  -->
 	<!-- 用dubbo协议在20880端口暴露服务 -->
-	<!-- <dubbo:protocol name="dubbo" port="20880" /> -->
+	<!--  <dubbo:protocol name="dubbo" port="20880" /> -->
 	
-	<!-- <bean id="testService" class="im.ky.fy.service.serviceimpl.TestServiceImpl" />  -->
+	 <!-- <bean id="testService" class="im.ky.fy.service.serviceimpl.TestServiceImpl" /> --> 
 	<!-- 声明需要暴露的服务接口 -->
 	<!-- <dubbo:service interface="im.ky.fy.service.TestService" ref="testService" timeout="300000"/> -->
 	
