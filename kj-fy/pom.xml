@@ -154,6 +154,20 @@
 			<artifactId>poi</artifactId>
 			<version>3.7</version>
 		</dependency>
+		
+		<!-- 二维码相关pom begin -->
+		<dependency>  
+            <groupId>com.google.zxing</groupId>  
+            <artifactId>core</artifactId>  
+            <version>3.0.0</version>  
+        </dependency>  
+        <dependency>  
+            <groupId>com.google.zxing</groupId>  
+            <artifactId>javase</artifactId>  
+            <version>3.0.0</version>  
+        </dependency> 
+        <!-- 二维码相关pom end -->
+        
 	</dependencies>
 	
 	<build>
