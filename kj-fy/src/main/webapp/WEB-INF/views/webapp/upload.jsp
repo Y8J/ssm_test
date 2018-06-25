@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-   	<form  action="/webapp/image/upload.do"  method="POST"  enctype="multipart/form-data">
+   	<form  action="/webapp/image/upload.do"  method="post"  enctype="multipart/form-data">
 		上传人：<input type="text" name="username" value="哈哈"/><br/>
 		上传文件：<input type="file" name="uploadFile"/>
 		<input type="submit" value="上传单个文件"/>
