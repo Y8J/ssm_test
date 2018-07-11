@@ -20,6 +20,7 @@
 		<property name="suffix" value=".jsp"/>
 	</bean>
 	
+	<!-- 图片上传bean -->
 	<bean id="multipartResolver"  class="org.springframework.web.multipart.commons.CommonsMultipartResolver">  
         <!-- set the max upload size100MB -->  
         <property name="maxUploadSize">  

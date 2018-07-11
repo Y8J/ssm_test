@@ -16,23 +16,23 @@ import javax.persistence.Table;
 @Table(name="t_user") //mapper才使用  
 public class UserMapperBean implements Serializable {
 	@Id
-	@Column(name="ID") //mapper才使用  
+	@Column(name="id") //mapper才使用  
 	@GeneratedValue(strategy=GenerationType.IDENTITY) //主键
 	private Long id; //用户ID
 	
-	@Column(name="USER_NAME") //mapper才使用  
+	@Column(name="name") //mapper才使用  
 	private  String userName; //用户名
 	
-	@Column(name="USER_PWD") //mapper才使用  
+	@Column(name="password") //mapper才使用  
 	private String userPwd; //密码
 	
-	@Column(name="STATUS") //mapper才使用  
+	@Column(name="status") //mapper才使用  
 	private Integer status; // 状态:0-失效; 1-正常; 2-锁定;3-待审核
 	
-	@Column(name="Email") //mapper才使用  
+	@Column(name="email") //mapper才使用  
 	private String email; //邮箱
 	
-	@Column(name="MOBILE") //mapper才使用  
+	@Column(name="mobile") //mapper才使用  
 	private String mobile; //手机
 
 	

@@ -55,7 +55,7 @@ public class TwoCodeAct {
 	 * @throws WriterException
 	 * @throws IOException
 	 */
-	@RequestMapping("data.html")
+	@RequestMapping("data.do")
 	public void goData(HttpServletRequest request, HttpServletResponse response,ModelMap model) throws WriterException, IOException{
 		
 		/** 判断URL */
