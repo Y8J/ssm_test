@@ -1,7 +1,5 @@
 package im.ky.fy.util.fileUtils;
 
-import im.ky.fy.util.Num62;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;

@@ -1,4 +1,4 @@
-package im.ky.fy.util;
+package im.ky.fy.util.fileUtils;
 
 /**
  * 62进制数字

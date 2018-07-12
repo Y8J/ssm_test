@@ -64,7 +64,7 @@ public class FileUtil {
 		String fileName = null;
 		String uploadpath = PropertyUtil.getProperty("youoil.upload.path");// /res/upload
 		String real = request.getSession().getServletContext().getRealPath(uploadpath);
-		String dateDir = Constants.SPT + "webapp";
+		String dateDir = Constants.SPT;
 		// 创建目录
 		File root = new File(real, dateDir);
 		if (!root.exists()) {

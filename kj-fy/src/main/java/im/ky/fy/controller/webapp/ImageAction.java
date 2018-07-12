@@ -12,6 +12,7 @@ import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 /**
@@ -23,6 +24,9 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 @Controller
 public class ImageAction {
 
+	//图片上传名字
+	public String fileName =null;
+	
 	@RequestMapping("uploadIndex.do")
 	public String uploadIndex(HttpServletRequest request,HttpServletResponse response,ModelMap model) throws JSONException{
 	
@@ -49,6 +53,7 @@ public class ImageAction {
 			ResponseUtils.renderJson(response, ajaxResult.toString());
 		}
 		
+		fileName = picPath;
 		ajaxResult.put("msg", "保存图片成功！！！");
 		ResponseUtils.renderJson(response, ajaxResult.toString());
 	}
@@ -61,9 +66,19 @@ public class ImageAction {
 	 * @return
 	 * @throws JSONException
 	 */
+	@ResponseBody
 	@RequestMapping("viewimage.do")
 	public String viewImage(HttpServletRequest request,HttpServletResponse response,ModelMap model) throws JSONException{
-		model.addAttribute("uploadRoot", PropertyUtil.getProperty("youoil.upload.path")+"/webapp/");
-		return "viewImage";
+		JSONObject ajaxResult = new JSONObject();
+		
+		String sr = "http://10.2.20.210:8088";
+		
+		String sr1 = PropertyUtil.getProperty("youoil.upload.path");
+		
+		
+		
+		ajaxResult.put("image", sr+sr1+fileName);
+		
+		return ajaxResult.toString();
 	}
 }
