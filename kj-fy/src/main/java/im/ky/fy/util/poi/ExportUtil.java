@@ -36,10 +36,7 @@ import org.springframework.stereotype.Service;
 
 
 /**
- * 功能描述：
- * 
- * @author dengbh
- * @since 2014-1-9
+ * 功能描述
  */
 @Service
 public class ExportUtil {

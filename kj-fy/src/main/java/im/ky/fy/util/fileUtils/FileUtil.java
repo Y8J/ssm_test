@@ -20,7 +20,7 @@ public class FileUtil {
 			return "no file";
 		}
 		String fileName = null;
-		String uploadpath = PropertyUtil.getProperty("youoil.upload.path");// /res/upload
+		String uploadpath = PropertyUtil.getProperty("upload.path");// /res/upload
 		String real = request.getSession().getServletContext().getRealPath(uploadpath);
 		String dateDir = Constants.SPT + FileNameUtils.genPathName();
 		// 创建目录
@@ -62,7 +62,7 @@ public class FileUtil {
 			return "no file";
 		}
 		String fileName = null;
-		String uploadpath = PropertyUtil.getProperty("youoil.upload.path");// /res/upload
+		String uploadpath = PropertyUtil.getProperty("upload.path");// /res/upload
 		String real = request.getSession().getServletContext().getRealPath(uploadpath);
 		String dateDir = Constants.SPT;
 		// 创建目录

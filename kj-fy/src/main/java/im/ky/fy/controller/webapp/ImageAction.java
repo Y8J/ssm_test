@@ -73,7 +73,7 @@ public class ImageAction {
 		
 		String sr = "http://10.2.20.210:8088";
 		
-		String sr1 = PropertyUtil.getProperty("youoil.upload.path");
+		String sr1 = PropertyUtil.getProperty("upload.path");
 		
 		
 		
