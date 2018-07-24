@@ -174,6 +174,36 @@
 		    <artifactId>java-jwt</artifactId>
 		    <version>3.1.0</version>
 		</dependency>
+		
+		<!-- fastjson jar的神奇功能  对象转json  json转 对象 -->
+	     <dependency>
+	 		<groupId>com.alibaba</groupId>
+	 	    <artifactId>fastjson</artifactId>
+	 		<version>1.1.37</version>
+	     </dependency>
+	     
+	    <!-- shiro安全权限校验 -->
+	    <dependency>
+	      <groupId>org.apache.shiro</groupId>
+	      <artifactId>shiro-core</artifactId>
+	      <version>1.2.4</version>
+	    </dependency>
+	    <dependency>
+	      <groupId>org.apache.shiro</groupId>
+	      <artifactId>shiro-ehcache</artifactId>
+	      <version>1.2.4</version>
+	    </dependency>
+	    <dependency>
+	      <groupId>org.apache.shiro</groupId>
+	      <artifactId>shiro-web</artifactId>
+	      <version>1.2.4</version>
+	    </dependency>
+	    <dependency>
+	      <groupId>org.apache.shiro</groupId>
+	      <artifactId>shiro-spring</artifactId>
+	      <version>1.2.4</version>
+	    </dependency>
+	    
 	</dependencies>
 	
 	<build>

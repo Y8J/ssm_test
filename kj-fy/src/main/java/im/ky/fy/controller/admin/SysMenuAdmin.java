@@ -85,22 +85,38 @@ public class SysMenuAdmin {
 	public String listgo(SysMenuBean menu,HttpServletRequest request, ModelMap model){
 		List<SysMenuBean> list = Lists.newArrayList();
 		List<SysMenuBean> sourcelist = sysMenuService.getList(null);
-		sortList(sourcelist,list, 1L);
+		sortList(list,sourcelist, 1L);
         model.addAttribute("mlist", list);
 		return "sysmenu/list";
 	}
 	
+	@ResponseBody
+	@RequestMapping(value = "v_json.do")
+	public List<SysMenuBean> listgojson(SysMenuBean menu,HttpServletRequest request, ModelMap model){
+		List<SysMenuBean> list = Lists.newArrayList();
+		List<SysMenuBean> sourcelist = sysMenuService.getList(null);
+		sortList(list,sourcelist, 1L);
+        model.addAttribute("mlist", list);
+		return list;
+	}
 	
 
-	public  void sortList(List<SysMenuBean> listAll,List<SysMenuBean> list,Long pid){
+	/**
+	 *  List<SysMenu> list = Lists.newArrayList(); 获取容器
+	 *  List<SysMenu> listAll = sysMenuMng.getList(); 查询全部
+	 * @param list
+	 * @param listAll
+	 * @param pid=1
+	 */
+	public static void sortList(List<SysMenuBean> list,List<SysMenuBean> listAll,Long id){
 		for (int i=0; i<listAll.size(); i++){
 			SysMenuBean e = listAll.get(i);
-			if (e.getParentId()==pid){
+			if (e.getParentId()!=null && e.getParentId().equals(id)){
 				list.add(e);
 				// 判断是否还有子节点, 有则继续获取子节点
 				for (int j=0; j<listAll.size(); j++){
 					SysMenuBean child = listAll.get(j);
-					if (child.getParentId()==e.getId()){
+					if (child.getParentId()!=null && child.getParentId().equals(e.getId())){
 						sortList(list, listAll, e.getId());
 						break;
 					}

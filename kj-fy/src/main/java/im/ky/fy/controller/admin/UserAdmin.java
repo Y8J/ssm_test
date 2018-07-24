@@ -1,5 +1,6 @@
 package im.ky.fy.controller.admin;
 
+import im.ky.fy.auth.AuthToken;
 import im.ky.fy.pojo.UserMapperBean;
 import im.ky.fy.service.UserService;
 
@@ -30,6 +31,7 @@ public class UserAdmin {
 	}
 	
 	//保存注册数据跳转到登录页面
+	@AuthToken //token校验注解 与拦截器配置属于
 	@RequestMapping("userSave.do")
 	public String saveUser(HttpServletRequest request, HttpServletResponse response,ModelMap model,UserMapperBean bean){
 		

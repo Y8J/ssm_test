@@ -9,6 +9,7 @@
 	<!-- 注解驱动 -->
 	<mvc:annotation-driven/>
 	
+	
 	<!-- 描述conctroller -->
 	<context:component-scan base-package="im.ky.fy.controller.admin"/>
 	
@@ -21,19 +22,27 @@
 	</bean>
 	
 	<!-- 配置链接拦截器 -->
-  <!--  <mvc:interceptors>
+  <mvc:interceptors>
+       
 	   <mvc:interceptor>
-	       配置需要拦截的请求链接
+	        <!-- 配置需要拦截的请求链接 只拦截.do .json结尾的请求 -->
+	       <mvc:mapping path="/**/*.do"  />
+	       <mvc:mapping path="/**/*.json"  />
+           <!--  token @AuthToken token权限校验拦截  -->
+	       <bean class="im.ky.fy.controller.intercept.AuthTokenHandlerInterceptor"/>
+	   </mvc:interceptor>
+	   
+       <!-- 
+	   <mvc:interceptor>
+	        配置需要拦截的请求链接
 	       <mvc:mapping path="/**"/>
-	       
-	       但是排除下面这些，也就是不拦截请求
-	       用户注册不需要拦截
+	       但是排除下面这些，也就是不拦截请求 用户注册不需要拦截
            <mvc:exclude-mapping path="/user/add.html" />
            <mvc:exclude-mapping path="/user/userSave.do" />
 	       用户登录不需要拦截
            <mvc:exclude-mapping path="/user/login.html" />
            <mvc:exclude-mapping path="/user/login.do" />
-           
+                 用户登陆拦截 
 	     <bean class="im.ky.fy.controller.intercept.UserHandlerInterceptor"/>
 	   </mvc:interceptor> -->
 	   
@@ -42,14 +51,14 @@
    <mvc:interceptor> 
           <mvc:mapping path="/webgo/json/**"/> 
             <bean class="yj.maven.intercept.WebGoHandlerInterceptor"/> 
-          </mvc:interceptor> 
+   </mvc:interceptor> 
          
-         <mvc:interceptor> 
+   <mvc:interceptor> 
          <mvc:mapping path="/webgo/json/**"/> 
             <bean class="yj.maven.intercept.WebGoHandlerInterceptor"/> 
-         </mvc:interceptor>
+   </mvc:interceptor>
     -->
-  <!--  </mvc:interceptors> -->
+  </mvc:interceptors>
    
    <!-- 重要，配置静态资源访问就可以访问js咯 -->
    <mvc:resources mapping="/res/**" location="/res/"/>
@@ -64,4 +73,11 @@
             <value>4096</value>  
         </property>  
     </bean> 
+    
+    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"
+          depends-on="lifecycleBeanPostProcessor"/>
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="securityManager"/>
+    </bean>
+    
 </beans>

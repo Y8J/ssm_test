@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Table(name="sys_menu") //mapper才使用  
+@Table(name="t_permission") //mapper才使用  
 public class SysMenuBean implements Serializable {
 
 	//`id` int(11) NOT NULL,

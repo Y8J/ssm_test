@@ -4,9 +4,9 @@
    <!-- 查询返回Map集合 -->
    <select id="queryTestMap" resultType="HashMap">
         SELECT
-           t.test_id   AS 'id',
-           t.test_name  AS 'name',
-           t.test_password  AS 'password'
+           t.id   AS 'id',
+           t.name  AS 'name',
+           t.password  AS 'password'
        FROM
                test t
    </select>
@@ -31,9 +31,9 @@
    <!--配置一个resultMap 指定返回的类型 -->
    <select id="queryTestPojo" resultType="test">
          SELECT
-           t.test_id id,
-           t.test_name name,
-           t.test_password password
+           t.id id,
+           t.name name,
+           t.password password
          FROM
            test t
    </select>

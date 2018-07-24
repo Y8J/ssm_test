@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+	<description>Shiro Configuration</description>  
+	
+	<!-- 使用spring组件扫描@service  -->
+    <context:component-scan base-package="im.ky.fy.service"/>
+    
+   
+    <!-- shiro filter -->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <!-- 安全管理器必须的 -->
+        <property name="securityManager" ref="securityManager"/>
+        <!-- 身份认证失败   认证提交的地址  -->
+        <property name="loginUrl" value="/admin/usa/login.html"/>
+        <!-- 权限认证失败    没有权限认证提交的地址 -->
+        <property name="unauthorizedUrl" value="/admin/usa/nopermissions.html"/>
+        <!-- 登陆成功跳转链接 -->
+        <property name="successUrl" value="/admin/sysmenu/v_treemenu.do" /> 
+        <!-- Shiro连接约束配置,即过滤链的定义 -->
+        <property name="filterChainDefinitions">
+            <value>
+                <!-- 对静态资源设置匿名访问 -->
+                /res/** = anon
+                <!-- 登陆验证进行匿名访问 -->
+                /admin/usa/login.html = anon
+                /admin/usa/login.do = anon
+                <!-- 登出注销 请求 logout.do地址，shiro去清除session -->
+                /admin/logout.do = logout
+                <!-- /** = authc 所有url都必须登陆认证通过才可以访问 -->
+                /admin/** = authc
+                
+                 <!-- perms[user:query]表示访问此连接需要权限为user:query的用户 -->  
+                /user=perms[user:query]
+                <!-- roles[manager]表示访问此连接需要用户的角色为generalManager -->  
+                /user/add.html=roles[generalManager]
+                /user/**=roles[admin]
+                /user/list.do=roles[deputyManager]
+            </value>
+        </property>
+    </bean>
+    
+     <!-- 自定义域realm -->
+    <bean id="shiroUserRealm" class="im.ky.fy.shiro.ShiroUserRealm"></bean>
+    <!-- 安全管理器  ref对象-->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="realm" ref="shiroUserRealm"/>
+    </bean>
+    
+    <!-- Shiro生命周期处理器 -->
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"></bean>
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="securityManager"/>
+    </bean>
+
+</beans>

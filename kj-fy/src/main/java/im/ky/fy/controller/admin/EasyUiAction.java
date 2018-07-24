@@ -27,7 +27,6 @@ public class EasyUiAction {
 	@Autowired
 	private UserService userService;
 	
-	//跳转到注册页面
 	@RequestMapping("tablejson.html")
 	public String goAddUserHtml(HttpServletRequest request, HttpServletResponse response,ModelMap model){
 		
