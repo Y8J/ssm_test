@@ -467,7 +467,11 @@ public class ExportUtil {
 	public static List<List<String>> resolveExcel(InputStream excelInputStream, int startSheet, int startLine, int startColumn) throws IOException {
 		List<List<String>> data = new ArrayList<List<String>>();
 		Workbook workBook = null;
-		workBook = new HSSFWorkbook(excelInputStream);
+		try {
+			workBook = new XSSFWorkbook(excelInputStream);
+		} catch (Exception ex) {
+			workBook = new HSSFWorkbook(excelInputStream);
+		}
 		// 循环页
 		for (int numSheet = startSheet - 1; numSheet < workBook.getNumberOfSheets(); numSheet++) {
 			Sheet sheet = workBook.getSheetAt(numSheet);
