@@ -472,6 +472,11 @@ public class ExportUtil {
 		} catch (Exception ex) {
 			workBook = new HSSFWorkbook(excelInputStream);
 		}
+		try {
+			workBook = new XSSFWorkbook(excelInputStream);
+		} catch (Exception ex) {
+			workBook = new HSSFWorkbook(excelInputStream);
+		}
 		// 循环页
 		for (int numSheet = startSheet - 1; numSheet < workBook.getNumberOfSheets(); numSheet++) {
 			Sheet sheet = workBook.getSheetAt(numSheet);
